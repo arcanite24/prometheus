@@ -7,7 +7,7 @@ const app = express()
 function startServer(callback) {
   app.listen(serverConfig.defaultPort, serverConfig.defaultAddress, () => {
     console.log(debugStrings.serverStartMessage(serverConfig.version, serverConfig.defaultPort, serverConfig.defaultAddress))
-    callback(app)
+    callback()
   })
 }
 

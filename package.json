@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/arcanite24/prometheus#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "glob": "^7.1.2",
+    "require-glob": "^3.2.0"
   }
 }

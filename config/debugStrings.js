@@ -7,6 +7,8 @@ module.exports = {
   *  v${version}                         *
   *  Listening on: ${address}:${port}    *
   ****************************************
-  `
+  `,
+
+  debugMessage: (message, level) => `${level}: -> ${message}`
 
 }
