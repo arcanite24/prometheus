@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/arcanite24/prometheus#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "glob": "^7.1.2",
+    "prometheus-mongo": "0.0.1",
     "require-glob": "^3.2.0"
   }
 }

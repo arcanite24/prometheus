@@ -12,10 +12,16 @@ module.exports = {
     'boolean'
   ],
 
-  registerModels(app, path) {
+  registerModels(app, path, adapterName, uri) {
     return new Promise(async (resolve, reject) => {
 
       try {
+
+        // Require adapter
+        const adapter = require(adapterName)
+
+        // Init adapter connection
+        adapter.connection.initConnection(uri)
 
         // Requiring all the models on the provided path
         const models = await glob('*.js', {cwd: path})
@@ -42,6 +48,9 @@ module.exports = {
           routes.registerRoutes(app, model, blueprints.controller)
 
           // Register Models
+          // TODO: Change the "adapter" attribute to a string, it will be the adapter module name to require
+          const restObject = adapter.models.createModel(model, models[model].attributes)
+          global[model] = restObject
 
           // Handle connectors and ORM
           
