@@ -14,9 +14,9 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json())
 
-function startServer(callback) {
-  app.listen(serverConfig.defaultPort, serverConfig.defaultAddress, () => {
-    console.log(debugStrings.serverStartMessage(serverConfig.version, serverConfig.defaultPort, serverConfig.defaultAddress))
+function startServer({address, port, version}, callback) {
+  app.listen(port, address, () => {
+    console.log(debugStrings.serverStartMessage(version, port, address))
     callback()
   })
 }
