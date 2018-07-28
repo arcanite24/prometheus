@@ -1,5 +1,4 @@
 const glob = require('require-glob')
-const serverConfig = require('../config/serverConfig')
 const debugStrings = require('../config/debugStrings')
 const routes = require('./routes')
 const blueprints = require('./blueprints')
@@ -30,7 +29,7 @@ module.exports = {
         for (const model in models) {
 
           // Debug Info
-          if (serverConfig.debug) console.log(debugStrings.debugMessage(`${model} model successfully registered`, 'debug'))
+          if (prometheus.config.debug) console.log(debugStrings.debugMessage(`${model} model successfully registered`, 'debug'))
 
           // Validate model & attributes
           for (const attrName in models[model].attributes) {

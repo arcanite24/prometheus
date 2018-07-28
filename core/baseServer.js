@@ -1,5 +1,4 @@
 const express = require('express')
-const serverConfig = require('../config/serverConfig')
 const debugStrings = require('../config/debugStrings')
 
 // middlewares
