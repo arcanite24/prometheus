@@ -1,3 +1,5 @@
+const isControllerAction = (modelName, id) => prometheus.info.actions.indexOf(id) >= 0 ? prometheus.info.actionsFunctions[id] : false
+
 module.exports = {
 
   // Rename to registerModelBlueprints
@@ -8,7 +10,8 @@ module.exports = {
     })
 
     app.get(`${prometheus.config.server.urlBase}/${modelName}/:id?`, (req, res) => {
-      controller.findOne(global[modelName], req, res)
+      const isAction = isControllerAction(modelName, req.params.id)
+      isAction ? isAction(req, res) : controller.findOne(global[modelName], req, res)
     })
 
     app.post(`${prometheus.config.server.urlBase}/${modelName}`, (req, res) => {
@@ -16,10 +19,12 @@ module.exports = {
     })
 
     app.put(`${prometheus.config.server.urlBase}/${modelName}/:id`, (req, res) => {
-      controller.update(global[modelName], req, res)
+      const isAction = isControllerAction(modelName, req.params.id)
+      isAction ? isAction(req, res) : controller.update(global[modelName], req, res)
     })
 
     app.delete(`${prometheus.config.server.urlBase}/${modelName}/:id`, (req, res) => {
+      isAction ? isAction(req, res) : controller.delete(global[modelName], req, res)
       controller.delete(global[modelName], req, res)
     })
 
@@ -36,6 +41,7 @@ module.exports = {
 
       // FIXME: Controller routes aren't working, probably because model blueprints with the .findOne() route
       // Register all routes for every action
+      app.get(`${prometheus.config.server.urlBase}/${controllerName}/${actionName}/:id?`, a)
       app.get(`${prometheus.config.server.urlBase}/${controllerName}/${actionName}/:id?`, a)
       app.post(`${prometheus.config.server.urlBase}/${controllerName}/${actionName}/:id?`, a)
       app.put(`${prometheus.config.server.urlBase}/${controllerName}/${actionName}/:id?`, a)

@@ -1,5 +1,7 @@
 const glob = require('require-glob')
 const routes = require('./routes')
+const _ = require('lodash')
+const helpers = require('./helpers')
 
 module.exports = {
 
@@ -26,7 +28,10 @@ module.exports = {
           
         }
 
-        resolve(Object.keys(controllers))
+        const registeredActions = _.flatten(Object.values(controllers).map(c => Object.keys(c)))
+        const actionsFunctions = _.merge({}, ...Object.values(controllers))
+
+        resolve({actions: registeredActions, actionsFunctions})
         
       } catch (error) {
         console.log(error)
