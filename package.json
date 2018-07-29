@@ -20,6 +20,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "glob": "^7.1.2",
+    "jsonwebtoken": "^8.3.0",
     "prometheus-mongo": "0.0.1",
     "require-glob": "^3.2.0"
   }
