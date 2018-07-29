@@ -1,6 +1,6 @@
 {
   "name": "@epsidev/prometheus",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Minimalist REST Framework",
   "main": "index.js",
   "scripts": {

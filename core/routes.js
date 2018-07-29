@@ -39,7 +39,6 @@ module.exports = {
       // Shorthand
       const a = actions[actionName]
 
-      // FIXME: Controller routes aren't working, probably because model blueprints with the .findOne() route
       // Register all routes for every action
       app.get(`${prometheus.config.server.urlBase}/${controllerName}/${actionName}/:id?`, a)
       app.get(`${prometheus.config.server.urlBase}/${controllerName}/${actionName}/:id?`, a)
